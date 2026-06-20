@@ -39,7 +39,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "latest",
+  "libVersion": "3.15.2",
   "appid": "",
   "projectname": "wx_eat",
   "condition": {},
