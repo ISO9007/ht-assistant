@@ -1,0 +1,119 @@
+<view class="page safe-bottom">
+  <view class="form-title">{{isEdit ? '编辑药品' : '添加药品'}}</view>
+  <view class="form-tip">同一种药可以添加多个时间，每个时间会单独提醒。</view>
+
+  <view class="form-card">
+    <view class="field">
+      <view class="label">药品名称</view>
+      <input class="input" placeholder="例如：降压药" value="{{form.name}}" data-field="name" bindinput="onInput" />
+    </view>
+
+    <view class="field">
+      <view class="label">剂量 / 用法</view>
+      <input class="input" placeholder="例如：1片" value="{{form.dosage}}" data-field="dosage" bindinput="onInput" />
+    </view>
+
+    <view class="field">
+      <view class="label">饭前饭后</view>
+      <view class="meal-options">
+        <button
+          wx:for="{{mealOptions}}"
+          wx:key="*this"
+          class="meal-option {{form.meal === item ? 'meal-option-active' : ''}}"
+          data-meal="{{item}}"
+          bindtap="chooseMeal"
+        >
+          {{item}}
+        </button>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="label">备注</view>
+      <textarea class="textarea" placeholder="例如：温水送服" value="{{form.note}}" data-field="note" bindinput="onInput" />
+    </view>
+  </view>
+
+  <view class="time-section">
+    <view class="section-row">
+      <view>
+        <view class="section-title">提醒时间</view>
+        <view class="form-tip">选择重复方式和时间点后加入，可设置每天或每周提醒。</view>
+      </view>
+    </view>
+
+    <view class="time-picker-panel">
+      <view class="repeat-options">
+        <button
+          wx:for="{{repeatOptions}}"
+          wx:key="value"
+          class="repeat-option {{selectedRepeat === item.value ? 'repeat-option-active' : ''}}"
+          data-repeat="{{item.value}}"
+          bindtap="chooseRepeat"
+        >
+          {{item.label}}
+        </button>
+      </view>
+
+      <picker wx:if="{{selectedRepeat === 'once'}}" mode="date" value="{{selectedDate}}" bindchange="onDateChange">
+        <view class="picker-row">
+          <view>
+            <view class="picker-row-label">选择日期</view>
+            <view class="picker-row-value">{{selectedDateText}}</view>
+          </view>
+          <view class="picker-row-arrow">修改</view>
+        </view>
+      </picker>
+
+      <view wx:if="{{selectedRepeat === 'weekly'}}" class="weekday-panel">
+        <view class="picker-row-label">选择星期几</view>
+        <view class="weekday-options">
+          <button
+            wx:for="{{weekdayItems}}"
+            wx:key="value"
+            class="weekday-option {{item.selected ? 'weekday-option-active' : ''}}"
+            data-weekday="{{item.value}}"
+            bindtap="toggleWeekday"
+          >
+            {{item.label}}
+          </button>
+        </view>
+      </view>
+
+      <picker mode="time" value="{{selectedTime}}" bindchange="onTimeChange">
+        <view class="picker-row">
+          <view>
+            <view class="picker-row-label">选择时间</view>
+            <view class="picker-row-value">{{selectedTime}}</view>
+          </view>
+          <view class="picker-row-arrow">修改</view>
+        </view>
+      </picker>
+
+      <button class="add-time-button" bindtap="addTime">加入提醒</button>
+    </view>
+
+    <view wx:if="{{timeItems.length}}" class="time-grid">
+      <view wx:for="{{timeItems}}" wx:key="key" class="time-chip">
+        <view>
+          <view class="time-text">{{item.label}}</view>
+          <view class="time-note">{{item.repeatLabel}}</view>
+        </view>
+        <button class="remove-time" data-key="{{item.key}}" bindtap="removeTime">删除</button>
+      </view>
+    </view>
+
+    <view wx:else class="empty-time">请至少添加一个提醒时间</view>
+  </view>
+
+  <view class="enable-row">
+    <view>
+      <view class="enable-title">启用提醒</view>
+      <view class="form-tip">关闭后，这个药不会提醒。</view>
+    </view>
+    <switch checked="{{form.enabled}}" bindchange="onEnabledChange" color="#167a45" />
+  </view>
+
+  <button class="primary-button save-button" bindtap="saveMedicine">保存药品</button>
+  <button wx:if="{{isEdit}}" class="danger-button delete-button" bindtap="deleteMedicine">删除药品</button>
+</view>

@@ -1,0 +1,17 @@
+<view wx:if="{{visible}}" class="modal-mask">
+  <view class="modal">
+    <view class="alert-label">吃药时间到了</view>
+    <view class="medicine-name">{{reminder.medicineName}}</view>
+    <view class="dose-box">
+      <view class="dose-time">{{reminder.timeLabel}}</view>
+      <view class="dose-index">第 {{reminder.doseIndex}} 次 / 共 {{reminder.totalDoses}} 次</view>
+    </view>
+    <view class="dose-detail">
+      <text>{{reminder.dosage}}</text>
+      <text wx:if="{{reminder.meal}}"> · {{reminder.meal}}</text>
+    </view>
+    <view wx:if="{{reminder.note}}" class="note">备注：{{reminder.note}}</view>
+    <button class="taken-button" bindtap="onTaken">已吃这一顿</button>
+    <button class="later-button" bindtap="onLater">10分钟后再提醒</button>
+  </view>
+</view>

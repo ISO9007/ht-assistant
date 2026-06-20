@@ -1,0 +1,47 @@
+<view class="page safe-bottom">
+  <view class="title">提醒方式</view>
+  <view class="tip">只展示微信小程序能真实调用或真实授权的能力，默认全部开启。</view>
+
+  <view class="settings-list">
+    <view class="setting-item">
+      <view>
+        <view class="setting-title">小程序提醒弹窗</view>
+        <view class="setting-desc">打开小程序或回到前台时，弹出大字提醒。</view>
+      </view>
+      <switch checked="{{settings.inAppAlert}}" data-key="inAppAlert" bindchange="toggleSetting" color="#167a45" />
+    </view>
+
+    <view class="setting-item">
+      <view>
+        <view class="setting-title">铃声和震动</view>
+        <view class="setting-desc">提醒弹窗出现时播放内置提示音，并震动手机。</view>
+      </view>
+      <switch checked="{{settings.soundVibrate}}" data-key="soundVibrate" bindchange="toggleSetting" color="#167a45" />
+    </view>
+
+    <view class="setting-item">
+      <view>
+        <view class="setting-title">微信订阅消息</view>
+        <view class="setting-desc">本期只做授权入口；后续接服务器后可定时发送。</view>
+      </view>
+      <switch checked="{{settings.subscribeMessage}}" data-key="subscribeMessage" bindchange="toggleSetting" color="#167a45" />
+    </view>
+
+    <view class="setting-item">
+      <view>
+        <view class="setting-title">手机日历提醒</view>
+        <view class="setting-desc">保存药品时尝试写入系统日历；部分 Android 机型可能不支持，会自动关闭。</view>
+      </view>
+      <switch checked="{{settings.phoneCalendar}}" data-key="phoneCalendar" bindchange="toggleSetting" color="#167a45" />
+    </view>
+  </view>
+
+  <button class="primary-button action" bindtap="requestSubscribe">开启微信订阅授权</button>
+  <button class="secondary-button action" bindtap="testCalendar">测试手机日历</button>
+  <button class="secondary-button action" bindtap="testAlert">测试弹窗和铃声</button>
+
+  <view class="notice">
+    <view class="notice-title">没有展示的能力</view>
+    <view class="notice-text">系统级本地推送、强制最大音量、后台持续响铃不是微信小程序可直接控制的能力，因此本期不作为可选项展示。</view>
+  </view>
+</view>

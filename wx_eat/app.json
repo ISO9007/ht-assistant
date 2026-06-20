@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/medicine-form/medicine-form",
+    "pages/reminder-settings/reminder-settings"
+  ],
+  "window": {
+    "navigationBarTitleText": "华佗时间",
+    "navigationBarBackgroundColor": "#F7FFF9",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F7FFF9"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

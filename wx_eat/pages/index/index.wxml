@@ -1,0 +1,66 @@
+<view class="page safe-bottom">
+  <view class="header">
+    <view>
+      <view class="app-title">华佗时间</view>
+      <view class="date-text">{{todayText}}</view>
+    </view>
+    <button class="settings-button" bindtap="goSettings">提醒方式</button>
+  </view>
+
+  <view class="next-panel {{nextOccurrence.status === 'due' || nextOccurrence.status === 'missed' ? 'next-panel-warn' : ''}}" wx:if="{{nextOccurrence}}">
+    <view class="section-label">{{nextLabel}}</view>
+    <view class="next-name">{{nextOccurrence.medicineName}}</view>
+    <view class="next-time">{{nextOccurrence.timeLabel}}</view>
+    <view class="next-dose">第 {{nextOccurrence.doseIndex}} 次 / 共 {{nextOccurrence.totalDoses}} 次 · {{nextOccurrence.dosage}} {{nextOccurrence.meal}}</view>
+    <button wx:if="{{nextOccurrence.status === 'due' || nextOccurrence.status === 'missed'}}" class="primary-button next-action" bindtap="markNextTaken">已吃这一顿</button>
+  </view>
+
+  <view class="empty-next" wx:else>
+    <view class="empty-title">今天的药都吃完了</view>
+    <view class="muted">辛苦了，明天继续按时吃药。</view>
+  </view>
+
+  <view class="action-row">
+    <button class="primary-button add-button" bindtap="addMedicine">添加药品</button>
+  </view>
+
+  <view class="section-head">
+    <view class="section-title">今日服药</view>
+    <view class="muted">{{todaySummary}}</view>
+  </view>
+
+  <view wx:if="{{medicineGroups.length}}">
+    <view wx:for="{{medicineGroups}}" wx:key="medicineId" class="medicine-card">
+      <view class="medicine-card-head">
+        <view>
+          <view class="medicine-title">{{item.name}}</view>
+          <view class="medicine-sub">{{item.dosage}} · {{item.meal}}</view>
+        </view>
+        <button class="small-edit" data-id="{{item.medicineId}}" bindtap="editMedicine">编辑</button>
+      </view>
+
+      <view class="time-list">
+        <view wx:for="{{item.occurrences}}" wx:for-item="timeItem" wx:key="id" class="time-block status-{{timeItem.status}}">
+          <view class="time-main">
+            <view class="time-label">{{timeItem.timeLabel}}</view>
+            <view class="time-index">第 {{timeItem.doseIndex}} 次 / 共 {{timeItem.totalDoses}} 次</view>
+          </view>
+          <view class="status-pill status-pill-{{timeItem.status}}">{{timeItem.statusText}}</view>
+          <button wx:if="{{timeItem.status !== 'taken'}}" class="mini-taken" data-id="{{timeItem.id}}" bindtap="markTakenById">已吃</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-card">
+    <view class="empty-title">还没有药品提醒</view>
+    <view class="muted">点“添加药品”，先设置第一种药。</view>
+  </view>
+
+  <reminder-modal
+    visible="{{reminderVisible}}"
+    reminder="{{activeReminder}}"
+    bind:taken="onReminderTaken"
+    bind:later="onReminderLater"
+  />
+</view>

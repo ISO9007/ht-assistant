@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "华佗时间",
+  "usingComponents": {
+    "reminder-modal": "/components/reminder-modal/reminder-modal"
+  }
+}

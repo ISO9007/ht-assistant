@@ -1,0 +1,259 @@
+.form-title {
+  color: #102016;
+  font-size: 52rpx;
+  font-weight: 900;
+}
+
+.form-tip {
+  margin-top: 8rpx;
+  color: #65766b;
+  font-size: 28rpx;
+  line-height: 1.4;
+}
+
+.form-card,
+.time-section,
+.enable-row {
+  width: 100%;
+  margin-top: 28rpx;
+  padding: 28rpx;
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 10rpx 36rpx rgba(24, 64, 38, 0.07);
+}
+
+.field + .field {
+  margin-top: 28rpx;
+}
+
+.label {
+  color: #17281d;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  min-height: 92rpx;
+  margin-top: 14rpx;
+  padding: 22rpx 24rpx;
+  border: 3rpx solid #dbe9df;
+  border-radius: 18rpx;
+  background: #fbfefc;
+  color: #13251a;
+  font-size: 34rpx;
+}
+
+.textarea {
+  height: 150rpx;
+  line-height: 1.45;
+}
+
+.meal-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 14rpx;
+}
+
+.meal-option {
+  flex: 0 0 48%;
+  min-width: 0;
+  min-height: 82rpx;
+  padding: 18rpx 8rpx;
+  border: 3rpx solid #dbe9df;
+  border-radius: 18rpx;
+  background: #fbfefc;
+  color: #41554a;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.meal-option-active {
+  border-color: #167a45;
+  background: #e7f4eb;
+  color: #135f37;
+}
+
+.section-row,
+.enable-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.section-title,
+.enable-title {
+  color: #17281d;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.add-time-button {
+  width: 100%;
+  min-width: 0;
+  min-height: 88rpx;
+  margin-top: 24rpx;
+  padding: 22rpx 18rpx;
+  border-radius: 18rpx;
+  background: #167a45;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.time-picker-panel {
+  margin-top: 22rpx;
+}
+
+.repeat-options {
+  display: flex;
+  gap: 12rpx;
+}
+
+.repeat-option {
+  flex: 1;
+  min-width: 0;
+  min-height: 82rpx;
+  padding: 18rpx 8rpx;
+  border: 3rpx solid #dbe9df;
+  border-radius: 18rpx;
+  background: #ffffff;
+  color: #41554a;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.repeat-option-active {
+  border-color: #167a45;
+  background: #e7f4eb;
+  color: #135f37;
+}
+
+.picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  min-height: 120rpx;
+  margin-top: 18rpx;
+  padding: 24rpx;
+  border: 3rpx solid #dbe9df;
+  border-radius: 22rpx;
+  background: #fbfefc;
+}
+
+.weekday-panel {
+  margin-top: 18rpx;
+  padding: 24rpx;
+  border: 3rpx solid #dbe9df;
+  border-radius: 22rpx;
+  background: #fbfefc;
+}
+
+.weekday-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 16rpx;
+}
+
+.weekday-option {
+  flex: 0 0 30%;
+  min-width: 0;
+  min-height: 74rpx;
+  padding: 16rpx 8rpx;
+  border: 3rpx solid #dbe9df;
+  border-radius: 16rpx;
+  background: #ffffff;
+  color: #41554a;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.weekday-option-active {
+  border-color: #167a45;
+  background: #e7f4eb;
+  color: #135f37;
+}
+
+.picker-row-label {
+  color: #65766b;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.picker-row-value {
+  margin-top: 8rpx;
+  color: #102016;
+  font-size: 42rpx;
+  font-weight: 900;
+}
+
+.picker-row-arrow {
+  flex: 0 0 auto;
+  padding: 14rpx 18rpx;
+  border-radius: 999rpx;
+  background: #e7f4eb;
+  color: #135f37;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.time-grid {
+  display: grid;
+  gap: 18rpx;
+  margin-top: 24rpx;
+}
+
+.time-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 118rpx;
+  padding: 22rpx;
+  border: 3rpx solid #dbe9df;
+  border-radius: 20rpx;
+  background: #f7fcf8;
+  overflow: hidden;
+}
+
+.time-text {
+  color: #102016;
+  font-size: 36rpx;
+  font-weight: 900;
+}
+
+.time-note {
+  margin-top: 8rpx;
+  color: #65766b;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.remove-time {
+  flex: 0 0 auto;
+  min-height: 72rpx;
+  padding: 16rpx 22rpx;
+  background: #fff0ed;
+  color: #b02f20;
+  font-size: 28rpx;
+}
+
+.empty-time {
+  margin-top: 22rpx;
+  padding: 28rpx;
+  border-radius: 18rpx;
+  background: #fff8f6;
+  color: #b02f20;
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.save-button,
+.delete-button {
+  width: 100%;
+  margin-top: 28rpx;
+}
