@@ -1,0 +1,31 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local Android SDK and machine-specific config
+local.properties
+
+# Android Studio / IntelliJ
+*.iml
+.idea/
+
+# Kotlin / Android build intermediates
+.kotlin/
+.externalNativeBuild/
+.cxx/
+captures/
+
+# Generated APK/AAB artifacts
+*.apk
+*.aab
+*.ap_
+
+# Signing secrets
+*.jks
+*.keystore
+keystore.properties
+
+# OS files
+.DS_Store
+Thumbs.db
