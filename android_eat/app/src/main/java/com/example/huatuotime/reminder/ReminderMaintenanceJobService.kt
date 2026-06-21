@@ -10,10 +10,12 @@ import com.example.huatuotime.data.LocalReminderRepository
 class ReminderMaintenanceJobService : JobService() {
     override fun onStartJob(params: JobParameters?): Boolean {
         val repository = LocalReminderRepository(this)
-        val reminders = repository.getReminders()
-        val pendingOccurrences = repository.getPendingOccurrences()
 
         ReminderNotifier(this).ensureChannels()
+        OverdueReminderTrigger(this).triggerDueReminders()
+
+        val reminders = repository.getReminders()
+        val pendingOccurrences = repository.getPendingOccurrences()
         ReminderScheduler(this).rescheduleAll(reminders, pendingOccurrences)
 
         if (repository.getDeliveryOptions().keepAliveService && reminders.any { it.enabled }) {
